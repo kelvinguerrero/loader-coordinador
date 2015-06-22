@@ -11,6 +11,7 @@ import sys
 from setuptools import setup, find_packages
 from setuptools.command.test import test as TestCommand
 
+
 # This is a plug-in for setuptools that will invoke py.test
 # when you run python setup.py test
 class PyTest(TestCommand):
@@ -34,20 +35,20 @@ setup(name="loader-coordinador",
         'Development Status :: 1 - Planning',
         'Programming Language :: Python'
       ],
-      keywords="cargue loader coordinador", # Separate with spaces
+      keywords="Cargue loader coordinador", # Separate with spaces
       author="Kelvin Dario Guerrero Avila",
       author_email="kd.guerrero143@uniandes.edu.co",
       url="",
       license="MIT",
       packages=find_packages(exclude=['examples', 'tests']),
       include_package_data=True,
-      zip_safe=true,
+      zip_safe=True,
       tests_require=['pytest'],
       cmdclass={'test': PyTest},
       
-      # TODO: List of packages that this one depends upon:   
+      #  List of packages that this one depends upon:
       install_requires=[],
-      # TODO: List executable scripts, provided by the package (this is just an example)
+      #  List executable scripts, provided by the package (this is just an example)
       entry_points={
         'console_scripts': 
             ['loader_coordinador=loadercoordinador:main']

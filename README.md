@@ -18,7 +18,7 @@ The next thing to do after having created the project layout is to add the code 
 
 **If you decided in favor of Option 1**:
 
-  - Create a version control repository under `src/loader_coordinador`. Here is an example with Git:
+  - Create a version control repository under `source/loader_coordinador`. Here is an example with Git:
 
         > cd src/loader_coordinador
         > git init
