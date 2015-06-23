@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from loader.fork import fork_service
+from fork import fork_service
 
 __author__ = 'kelvin Guerrero'
 

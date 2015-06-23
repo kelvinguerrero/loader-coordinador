@@ -1,8 +1,11 @@
 # -*- coding: utf-8 -*-
-from loader.loadercoordinador import maestrias
-from loader.fork import fork_service
+from util import folder
+from loadercoordinador import maestrias
+from fork import fork_service
+import local_settings
 import csv
 import json
+import local_settings
 
 __author__ = 'kelvin Guerrero'
 
@@ -86,7 +89,7 @@ def crear_estudiantes(pprograma, pcodigo , papellido, pnombre, pemail, pstatus):
 def cargar_estudiantes( parchivo ):
     print parchivo
     delimiter = '	'
-    with open('cargue/' + parchivo, 'rb') as csvfile:
+    with open( local_settings.path_student + parchivo, 'rb') as csvfile:
         reader = csv.DictReader(csvfile,  delimiter=delimiter)
         for row in reader:
             crear_estudiantes(row['PROGRAMA'], row['CARNET'] , row['APELLIDOS'], row['NOMBRES'], row['EMAIL'], 1)
@@ -175,12 +178,13 @@ def cargar_estudiantes_graduados():
 
 
 def cargar_estudiantes_general( ):
-    cargar_estudiantes("Matriculados_201220.csv")
-    cargar_estudiantes("Matriculados_201310.csv")
-    cargar_estudiantes("Matriculados_201320.csv")
-    cargar_estudiantes("Matriculados_201410.csv")
-    cargar_estudiantes("Matriculados_201420.csv")
-    cargar_estudiantes("Matriculados_201510.csv")
+    #print os.path.dirname(os.path.abspath(__file__))
+    #print os.getcwd()
+    archivos = folder.listar_archivos( local_settings.path_student )
+    for ruta in archivos:
+        cargar_estudiantes(ruta)
+
+def cargar_graduados():
     cargar_estudiantes_graduados( )
 
 

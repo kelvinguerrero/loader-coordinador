@@ -1,3 +1,8 @@
+import os
+
+base_proyect_path = os.getcwd()
+path_student = base_proyect_path+"/data/student/"
+
 scrumdo_username=""
 scrumdo_password=""
 scrumdo_host="http://www.scrumdo.com"
