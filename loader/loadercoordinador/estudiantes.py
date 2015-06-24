@@ -95,7 +95,7 @@ def cargar_estudiantes( parchivo ):
             crear_estudiantes(row['PROGRAMA'], row['CARNET'] , row['APELLIDOS'], row['NOMBRES'], row['EMAIL'], 1)
 
 
-def cargar_estudiantes_graduados():
+def cargar_estudiantes_graduados(parchivo):
 
     #Parametros para la llamada de un estudiante
     headers_student = {
@@ -111,7 +111,7 @@ def cargar_estudiantes_graduados():
     }
 
     delimiter = '	'
-    with open('cargue/Graduados_MATI.csv', 'rb') as csvfile:
+    with open(local_settings.path_student_graduated + parchivo, 'rb') as csvfile:
         reader = csv.DictReader(csvfile,  delimiter=delimiter)
         for row in reader:
             BASE_PATH_STUDENT = "http://localhost:8000/map/api/student/codigo_student/?operation=6"
@@ -178,14 +178,15 @@ def cargar_estudiantes_graduados():
 
 
 def cargar_estudiantes_general( ):
-    #print os.path.dirname(os.path.abspath(__file__))
-    #print os.getcwd()
     archivos = folder.listar_archivos( local_settings.path_student )
     for ruta in archivos:
         cargar_estudiantes(ruta)
 
+
 def cargar_graduados():
-    cargar_estudiantes_graduados( )
+    archivos = folder.listar_archivos( local_settings.path_student_graduated )
+    for ruta in archivos:
+        cargar_estudiantes_graduados(ruta)
 
 
 def run(*args):

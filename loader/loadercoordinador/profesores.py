@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
-from loader.fork import fork_service
+from util import folder
+from fork import fork_service
 import csv
 import json
+import local_settings
 
 __author__ = 'kelvin Guerrero'
 
@@ -45,11 +47,17 @@ def run(*args):
         cargar_profesores("profesores_201510.csv")
 
 
+def cargar_profesores_general():
+    archivos = folder.listar_archivos(local_settings.path_teacher_graduated)
+    for ruta in archivos:
+        cargar_profesores(ruta)
+
+
 def cargar_profesores(p_ruta_archivo):
     print "carge de profesores"
 
     delimiter = '	'
-    with open('cargue/'+p_ruta_archivo, 'rb') as csvfile:
+    with open(  local_settings.path_teacher_graduated+p_ruta_archivo, 'rb') as csvfile:
         reader = csv.DictReader(csvfile,  delimiter=delimiter)
         for row in reader:
 
@@ -61,7 +69,7 @@ def cargar_profesores(p_ruta_archivo):
 
  #               p_pensum =
 
-            validar_cargue_curso(p_codigo, p_nombre, p_creditos, p_vacacional, p_pensum)
+            #validar_cargue_curso(p_codigo, p_nombre, p_creditos, p_vacacional, p_pensum)
 
             rta_profesor = dar_profesor( row['ID_PROFESOR'] )
             s_code = rta_profesor.status_code

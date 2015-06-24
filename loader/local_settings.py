@@ -2,6 +2,8 @@ import os
 
 base_proyect_path = os.getcwd()
 path_student = base_proyect_path+"/data/student/"
+path_student_graduated = base_proyect_path+"/data/student_graduated/"
+path_teacher_graduated = base_proyect_path+"/data/teacher/"
 
 scrumdo_username=""
 scrumdo_password=""
