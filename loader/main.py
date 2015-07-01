@@ -20,7 +20,11 @@ def main(**kwargs):
     else:
         print()
 
-
+#Metodo que permite hacer el cargue de informacion a la plataforma
+# Formas de cargue:
+# Estudiantes: python main.py -l estudiantes
+# Profesores: python main.py -l profesores
+# Estudiantes graduados: python main.py -l graduados
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('-l', '--load', default='', type=str, help='Type of load to do.')
